@@ -1,0 +1,10 @@
+<swiper
+  [slidesPerView]="1"
+  [spaceBetween]="1"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+>
+  <ng-template swiperSlide *ngFor="let img of images"
+    ><img [src]="img" alt="" srcset=""
+  /></ng-template>
+</swiper>

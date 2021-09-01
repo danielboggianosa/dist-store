@@ -9,9 +9,9 @@ import SwiperCore from 'swiper';
 export class BannerComponent implements OnInit {
 
   images: string[] = [
-    'https://picsum.photos/700/250',
-    'https://picsum.photos/701/250',
-    'https://picsum.photos/702/250',
+    'https://picsum.photos/1919/250',
+    'https://picsum.photos/1920/250',
+    'https://picsum.photos/1921/250',
   ]
 
   constructor() { }

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { ProductsService } from '../core/services/products.service';
-import { Product } from './../product.model';
+import { ProductsService } from './../../../core/services/products/products.service';
+import { Product } from './../../../core/models/product.model';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  selector: 'app-product-detail',
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailComponent implements OnInit {
 
   product: Product | undefined;
 

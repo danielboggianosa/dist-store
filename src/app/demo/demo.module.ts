@@ -5,7 +5,6 @@ import { DemoComponent } from './components/demo/demo.component';
 
 import { DemoRoutingModule } from './demo-routing.module';
 import { SharedModule } from './../shared/shared.module';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +15,6 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     DemoRoutingModule,
     FormsModule
-  ],
-  exports: [
-    DemoComponent
   ]
 })
 export class DemoModule {

@@ -6,10 +6,12 @@ import { DemoComponent } from './components/demo/demo.component';
 import { DemoRoutingModule } from './demo-routing.module';
 import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { ContentProjectionComponent } from './components/content-projection/content-projection.component';
 
 @NgModule({
   declarations: [
     DemoComponent,
+    ContentProjectionComponent,
   ],
   imports: [
     CommonModule,

@@ -1,29 +1,32 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { MaterialModule } from "../material/material.module";
-import { FooterComponent } from "./components/footer/footer.component";
-import { HeaderComponent } from "./components/header/header.component";
-import { HighlightDirective } from "./directives/highlight.directive";
-import { ExponentialPipe } from "./pipes/exponential.pipe";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { ExponentialPipe } from './pipes/exponential/exponential.pipe';
+import { HighlightDirective } from './directives/highlight/highlight.directive';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
+    ExponentialPipe,
+    HighlightDirective,
     HeaderComponent,
     FooterComponent,
+    CartComponent
+  ],
+  exports: [
     ExponentialPipe,
-    HighlightDirective
+    HighlightDirective,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     MaterialModule
-  ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
-    ExponentialPipe,
-    HighlightDirective
   ]
 })
 export class SharedModule { }

@@ -16,7 +16,13 @@ import { Product } from '../../../core/models/product.model';
 })
 export class ProductComponent implements OnInit, OnDestroy {
 
-  @Input() product: Product | undefined;
+  @Input() product: Product = {
+    id: '',
+    title: '',
+    price: 0,
+    description: '',
+    image: ''
+  };
   @Output() productClicked: EventEmitter<any> = new EventEmitter();
 
   today = new Date();
@@ -35,7 +41,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   addCart() {
     console.log('añadir al carrito');
-    this.productClicked.emit(this.product?.id);
+    this.productClicked.emit(this.product.id);
   }
 
 }

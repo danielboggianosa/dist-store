@@ -13,10 +13,10 @@ export class ProductDetailComponent implements OnInit {
 
   product: Product = {
     id: '',
-    image: '',
+    title: '',
     price: 0,
     description: '',
-    title: ''
+    image: ''
   };
 
   constructor(
@@ -50,6 +50,24 @@ export class ProductDetailComponent implements OnInit {
     this.productsService.createProduct(newProduct)
     .subscribe(product => {
       console.log(product);
+    });
+  }
+
+  updateProduct() {
+    const updateProduct: Partial<Product> = {
+      price: 555555,
+      description: 'edicion titulo'
+    };
+    this.productsService.updateProduct('2', updateProduct)
+    .subscribe(product => {
+      console.log(product);
+    });
+  }
+
+  deleteProduct() {
+    this.productsService.deleteProduct('222')
+    .subscribe(rta => {
+      console.log(rta);
     });
   }
 

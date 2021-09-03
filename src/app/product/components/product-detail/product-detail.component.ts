@@ -11,7 +11,13 @@ import { Product } from './../../../core/models/product.model';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product | undefined;
+  product: Product = {
+    id: '',
+    image: '',
+    price: 0,
+    description: '',
+    title: ''
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +27,29 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
-      this.product = this.productsService.getProduct(id);
+      this.fetchProduct(id);
+      // this.product = this.productsService.getProduct(id);
+    });
+  }
+
+  fetchProduct(id: string) {
+    this.productsService.getProduct(id)
+    .subscribe(product => {
+      this.product = product;
+    });
+  }
+
+  createProduct() {
+    const newProduct: Product = {
+      id: '222',
+      title: 'nuevo desde angular',
+      image: 'assets/images/banner-1.jpg',
+      price: 3000,
+      description: 'nuevo producto'
+    };
+    this.productsService.createProduct(newProduct)
+    .subscribe(product => {
+      console.log(product);
     });
   }
 

@@ -9,6 +9,8 @@ import {
 
 import { Product } from '../../../core/models/product.model';
 
+import { CartService } from './../../../core/services/cart.service';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -16,18 +18,14 @@ import { Product } from '../../../core/models/product.model';
 })
 export class ProductComponent implements OnInit, OnDestroy {
 
-  @Input() product: Product = {
-    id: '',
-    title: '',
-    price: 0,
-    description: '',
-    image: ''
-  };
+  @Input() product!: Product;
   @Output() productClicked: EventEmitter<any> = new EventEmitter();
 
   today = new Date();
 
-  constructor() {
+  constructor(
+    private cartService: CartService
+  ) {
     console.log('1. constructor');
   }
 
@@ -41,7 +39,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   addCart() {
     console.log('añadir al carrito');
-    this.productClicked.emit(this.product.id);
+    this.cartService.addCart(this.product);
+    // this.productClicked.emit(this.product.id);
   }
 
 }

@@ -10,7 +10,7 @@ import { ProductsService } from './../../../core/services/products/products.serv
 })
 export class ProductsListComponent implements OnInit {
 
-  products: Product[] = [];
+  products : Product[] = [];
   displayedColumns: string[] = ['id', 'title', 'price', 'actions'];
 
   constructor(
@@ -23,7 +23,7 @@ export class ProductsListComponent implements OnInit {
 
   fetchProducts() {
     this.productsService.getAllProducts()
-    .subscribe((products:Product[]) => {
+    .subscribe(products => {
       this.products = products;
     });
   }

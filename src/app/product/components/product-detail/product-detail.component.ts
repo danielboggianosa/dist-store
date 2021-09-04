@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { ProductsService } from './../../../core/services/products/products.service';
-import { Product } from './../../../core/models/product.model';
+import { Product, ProductResolved } from './../../../core/models/product.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,6 +18,7 @@ export class ProductDetailComponent implements OnInit {
     description: '',
     image: ''
   };
+  errorMessage!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,18 +26,13 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      const id = params.id;
-      this.fetchProduct(id);
-      // this.product = this.productsService.getProduct(id);
-    });
+    const resolvedData: ProductResolved = this.route.snapshot.data['resolvedData']
+    this.errorMessage = resolvedData.error
+    this.onProductRetreived(resolvedData.product!)
   }
 
-  fetchProduct(id: string) {
-    this.productsService.getProduct(id)
-    .subscribe(product => {
-      this.product = product;
-    });
+  onProductRetreived(product: Product): void {
+    this.product = product
   }
 
   createProduct() {
@@ -48,9 +44,9 @@ export class ProductDetailComponent implements OnInit {
       description: 'nuevo producto'
     };
     this.productsService.createProduct(newProduct)
-    .subscribe(product => {
-      console.log(product);
-    });
+      .subscribe(product => {
+        console.log(product);
+      });
   }
 
   updateProduct() {
@@ -59,16 +55,16 @@ export class ProductDetailComponent implements OnInit {
       description: 'edicion titulo'
     };
     this.productsService.updateProduct('2', updateProduct)
-    .subscribe(product => {
-      console.log(product);
-    });
+      .subscribe(product => {
+        console.log(product);
+      });
   }
 
   deleteProduct() {
     this.productsService.deleteProduct('222')
-    .subscribe(rta => {
-      console.log(rta);
-    });
+      .subscribe(rta => {
+        console.log(rta);
+      });
   }
 
 }

@@ -5,3 +5,8 @@ export interface Product {
   description: string;
   image: string;
 }
+
+export interface ProductResolved {
+  product: Product | null;
+  error?: any;
+}
